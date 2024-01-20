@@ -1,3 +1,5 @@
+link = input("")
+
 %%capture
 !pip install yt-dlp
 !pip install git+https://github.com/openai/whisper.git -q 
@@ -7,7 +9,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-!yt-dlp -f 'ba' -x --audio-format mp3 https://www.youtube.com/watch?v=TX9qSaGXFyg  -o 'tmp'
+!yt-dlp -f 'ba' -x --audio-format mp3 link  -o 'tmp'
 model = whisper.load_model("small")
 transcription = model.transcribe('/content/tmp.mp3')
 res = transcription['segments']
